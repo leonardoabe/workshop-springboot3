@@ -3,6 +3,7 @@ package com.abetech.springboot_demo.config;
 import com.abetech.springboot_demo.entities.Category;
 import com.abetech.springboot_demo.entities.Order;
 import com.abetech.springboot_demo.entities.OrderItem;
+import com.abetech.springboot_demo.entities.Payment;
 import com.abetech.springboot_demo.entities.Product;
 import com.abetech.springboot_demo.entities.User;
 import com.abetech.springboot_demo.entities.enums.OrderStatus;
@@ -79,5 +80,10 @@ public class TestConfig implements CommandLineRunner {
         OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 
         orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+
+        Payment pay1 = new Payment(null, Instant.parse("2024-11-22T15:21:22Z"), o1);
+        o1.setPayment(pay1);
+
+        orderRepository.save(o1);
     }
 }
