@@ -23,4 +23,8 @@ public class UserService {
         //TODO create exception for non user found
         return user.orElseThrow();
     }
+
+    public User insert(User user) {
+        return repository.save(user);
+    }
 }
